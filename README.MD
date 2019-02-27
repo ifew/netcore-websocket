@@ -13,8 +13,11 @@ $ cd src
 $ dotnet run
 ```
 
-Download via websocket tools such as
+Download websocket tools such as
 - https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en
 
 URL to connect
 - ws://localhost:5001/chat
+
+Test Send message at
+- http://localhost:5001/api/values
