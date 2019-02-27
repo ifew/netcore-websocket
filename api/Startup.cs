@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using api.WebSocketManager;
+using api.Contexts;
 
 namespace api
 {
@@ -26,10 +28,11 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddWebSocketManager();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -40,6 +43,14 @@ namespace api
                 app.UseHsts();
             }
 
+            var websocketOptions = new WebSocketOptions()
+            {
+                KeepAliveInterval = TimeSpan.FromSeconds(60),
+                ReceiveBufferSize = 4 * 1024
+            };
+
+            app.UseWebSockets(websocketOptions);
+            app.MapWebSocketManager("/chat", serviceProvider.GetService<ChatContext>());
             app.UseHttpsRedirection();
             app.UseMvc();
         }
