@@ -64,10 +64,7 @@ namespace api.WebSocketManager
                     System.Console.WriteLine($"Brodcast message to: {_webSocketHandler.WebSocketConnectionManager.GetId(socket)}");
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
 
         }
     }
