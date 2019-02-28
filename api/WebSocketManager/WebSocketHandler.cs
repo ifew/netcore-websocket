@@ -20,13 +20,25 @@ namespace api.WebSocketManager
         public virtual async Task OnConnected(WebSocket socket)
         {
             WebSocketConnectionManager.AddSocket(socket);
-            System.Console.WriteLine($"Connected ID: \"{WebSocketConnectionManager.GetId(socket)}\"");
+
+            var connectionID = WebSocketConnectionManager.GetId(socket);
+            
+            var message = $"Connected ID: \"{connectionID}\"";
+            await SendMessageAsync(connectionID, message);
+
+            System.Console.WriteLine(message);
         }
 
         public virtual async Task OnDisconnected(WebSocket socket)
         {
-            await WebSocketConnectionManager.RemoveSocket(WebSocketConnectionManager.GetId(socket));
-            System.Console.WriteLine($"Disconnected ID: \"{WebSocketConnectionManager.GetId(socket)}\"");
+            var connectionID = WebSocketConnectionManager.GetId(socket);
+
+            var message = $"Disconnected ID: \"{connectionID}\"";
+            await SendMessageAsync(connectionID, message);
+
+            await WebSocketConnectionManager.RemoveSocket(connectionID);
+
+            System.Console.WriteLine($"Disconnected ID: \"{connectionID}\"");
        
         }
 
