@@ -15,16 +15,26 @@ namespace api.WebSocketManager
 
         public WebSocket GetSocketById(string id)
         {
+            System.Console.WriteLine($"Get Socket by ID: {id}");
             return _sockets.FirstOrDefault(p => p.Key == id).Value;
         }
 
         public ConcurrentDictionary<string, WebSocket> GetAll()
         {
+            System.Console.WriteLine($"Get All Socket");
             return _sockets;
+        }
+
+        public ConcurrentDictionary<string, List<string>> GetGroups()
+        {
+            System.Console.WriteLine($"Get All Socket");
+            return _groups;
         }
 
         public List<string> GetAllFromGroup(string GroupID)
         {
+            System.Console.WriteLine($"Get Socket from Group ID: {GroupID}");
+ 
             if (_groups.ContainsKey(GroupID))
             {
                 return _groups[GroupID];
@@ -35,6 +45,7 @@ namespace api.WebSocketManager
 
         public string GetId(WebSocket socket)
         {
+            System.Console.WriteLine($"Get ID by Socket");
             return _sockets.FirstOrDefault(p => p.Value == socket).Key;
         }
 
@@ -53,6 +64,7 @@ namespace api.WebSocketManager
             }
 
             _groups.TryAdd(groupID, new List<string> { socketID });
+            System.Console.WriteLine($"Added Socket ID {socketID} to Group ID {groupID}");
         }
 
         public void RemoveFromGroup(string socketID, string groupID)
@@ -61,6 +73,7 @@ namespace api.WebSocketManager
             {
                 _groups[groupID].Remove(socketID);
             }
+            System.Console.WriteLine($"Removed Socket ID {socketID} to Group ID {groupID}");
         }
 
         public async Task RemoveSocket(string id)
@@ -75,11 +88,15 @@ namespace api.WebSocketManager
             await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
                                     statusDescription: "Closed by the WebSocketManager",
                                     cancellationToken: CancellationToken.None).ConfigureAwait(false);
+
+            System.Console.WriteLine($"Removed Socket ID : {id}");
         }
 
         private string CreateConnectionId()
         {
-            return Guid.NewGuid().ToString();
+            var ConnectionId = Guid.NewGuid().ToString();
+            System.Console.WriteLine($"Created ConnectionID : {ConnectionId}");
+            return ConnectionId;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace api.Contexts
         {
             string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
             await SendMessageToAllAsync(message);
+            System.Console.WriteLine($"Send message to All from context: {message}");
         }
     }
 }

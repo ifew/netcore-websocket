@@ -61,6 +61,7 @@ namespace api.WebSocketManager
                                                            cancellationToken: CancellationToken.None);
 
                     handleMessage(result, buffer);
+                    System.Console.WriteLine($"Brodcast message to: {_webSocketHandler.WebSocketConnectionManager.GetId(socket)}");
                 }
             }
             catch (Exception ex)
