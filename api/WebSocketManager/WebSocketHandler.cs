@@ -33,9 +33,6 @@ namespace api.WebSocketManager
         {
             var connectionID = WebSocketConnectionManager.GetId(socket);
 
-            var message = $"Disconnected ID: \"{connectionID}\"";
-            await SendMessageAsync(connectionID, message);
-
             await WebSocketConnectionManager.RemoveSocket(connectionID);
 
             System.Console.WriteLine($"Disconnected ID: \"{connectionID}\"");

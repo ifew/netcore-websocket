@@ -15,25 +15,25 @@ namespace api.WebSocketManager
 
         public WebSocket GetSocketById(string id)
         {
-            System.Console.WriteLine($"Get Socket by ID: {id}");
+            //System.Console.WriteLine($"Get Socket by ID: {id}");
             return _sockets.FirstOrDefault(p => p.Key == id).Value;
         }
 
         public ConcurrentDictionary<string, WebSocket> GetAll()
         {
-            System.Console.WriteLine($"Get All Socket");
+            //System.Console.WriteLine($"Get All Socket");
             return _sockets;
         }
 
         public ConcurrentDictionary<string, List<string>> GetGroups()
         {
-            System.Console.WriteLine($"Get All Socket");
+            //System.Console.WriteLine($"Get All Socket");
             return _groups;
         }
 
         public List<string> GetAllFromGroup(string GroupID)
         {
-            System.Console.WriteLine($"Get Socket from Group ID: {GroupID}");
+            //System.Console.WriteLine($"Get Socket from Group ID: {GroupID}");
  
             if (_groups.ContainsKey(GroupID))
             {
@@ -45,7 +45,7 @@ namespace api.WebSocketManager
 
         public string GetId(WebSocket socket)
         {
-            System.Console.WriteLine($"Get ID by Socket");
+            //System.Console.WriteLine($"Get ID by Socket");
             return _sockets.FirstOrDefault(p => p.Value == socket).Key;
         }
 
