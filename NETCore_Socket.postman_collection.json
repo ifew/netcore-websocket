@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "c796aa81-cf3e-4560-a1ce-74c00888f32e",
+		"name": "Lab Dotnet Websocket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/broadcast",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"broadcast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Broadcast to all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/broadcast/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"broadcast",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Broadcast to Connection ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/fe0f7afa-7401-43ba-b6ee-36ea82ca2812",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"fe0f7afa-7401-43ba-b6ee-36ea82ca2812"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Broadcast to Connection ID with custom message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\" : \"Hi, there\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/770ee43f-9c58-459c-a0d9-9105eeb0f559",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"770ee43f-9c58-459c-a0d9-9105eeb0f559"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"connection_id\" : \"7f3f241b-5655-4880-87f6-a0e9a75bb444\",\t\n\t\"group_id\": \"secretgroup\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/group/new",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"group",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All groups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/group",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"group"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Connection ID in group",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/group/room39",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"group",
+						"room39"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Broadcast to Group ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\" : \"hello secret\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/group/secretgroup",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"group",
+						"secretgroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Connection ID from Group",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5000/api/broadcast/group/secretgroup/7f3f241b-5655-4880-87f6-a0e9a75bb444",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"broadcast",
+						"group",
+						"secretgroup",
+						"7f3f241b-5655-4880-87f6-a0e9a75bb444"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "30cd9d8a-32b2-4bdf-88bb-6697e1ffa5c2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f55759c7-a803-4803-b572-225d5aa86d0c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
