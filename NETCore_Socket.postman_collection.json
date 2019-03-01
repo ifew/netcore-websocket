@@ -125,10 +125,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"connection_id\" : \"7f3f241b-5655-4880-87f6-a0e9a75bb444\",\t\n\t\"group_id\": \"secretgroup\"\n}"
+					"raw": "{\n\t\"connection_id\" : \"ddcfb7dd-392a-4d5b-82f9-3a360350b2ec\",\t\n\t\"group_id\": \"secretgroup\"\n}"
 				},
 				"url": {
-					"raw": "https://localhost:5000/api/broadcast/group/new",
+					"raw": "https://localhost:5000/api/broadcast/group",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -137,8 +137,7 @@
 					"path": [
 						"api",
 						"broadcast",
-						"group",
-						"new"
+						"group"
 					]
 				}
 			},
