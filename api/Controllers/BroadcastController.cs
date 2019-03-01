@@ -80,7 +80,7 @@ namespace api.Controllers
 
         //Add group connection
         [HttpPost]
-        [Route("group/new")]
+        [Route("group")]
         public JsonResult CreateGroup([FromBody] GroupModel json)
         {
             _chatContext.WebSocketConnectionManager.AddToGroup(json.connection_id, json.group_id);
@@ -116,7 +116,7 @@ namespace api.Controllers
         public string connection_id { get; set; }
         public string group_id { get; set; }
     }
-    
+
     public class GroupListModel {
         public string connection_id { get; set; }
     }

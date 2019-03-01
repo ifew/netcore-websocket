@@ -38,7 +38,7 @@ POST https://localhost:5000/api/broadcast/{CONNECTION_ID}
 ```
 
 ### Create Group with add connection id to
-POST https://localhost:5000/api/broadcast/group/new
+POST https://localhost:5000/api/broadcast/group
 
 ```json
 {
